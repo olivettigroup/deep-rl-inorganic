@@ -4,7 +4,7 @@ This repository contains the code and data for the paper *Deep Reinforcement Lea
 # Installation Instructions
 - Clone this repository and navigate to it. 
 - Create the conda environment for the PGN tasks. `conda env create --name PGN_env --file requirements_PGN.txt`
-- Create the conda environment for the DQN tasks. `conda env create --name DQN_env --file requirements_DQN.txt`
+- For DQN tasks, follow the instructions in the repo linked under `RL_materials_generation` (https://github.com/eltonpan/RL_materials_generation)
 - Create the conda environment for the DING tasks. `conda env create --name DING_env --file requirements_DING.txt`
 - Create the conda environment 
 - Switch to the new environment, depending on which notebook you are running. `conda activate <env_name>`
@@ -20,7 +20,7 @@ The full datasets used in the paper are available online. Data must be downloade
 # Usage
 Each folder pertains to a particular task (synthesis route classification or synthesis condition prediction) containing the associated Jupyter notebooks and python code.
 - The `PGN` folder contains the necessary code for the Policy Gradient Network (PGN) training and evaluation tasks.
-- The `DQN` folder contains the necessary code for the Deep-Q Network (DQN) training and evaluation tasks.
+- The `RL_materials_generation` folder contains the necessary code for the Deep-Q Network (DQN) training and evaluation tasks, also linked in a separate repo (https://github.com/eltonpan/RL_materials_generation).
 - The `DING` folder contains the necessary code for the Deep Inorganic Material Generator (DING) training and evaluation tasks.
 
 # Cite
