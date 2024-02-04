@@ -1,0 +1,3 @@
+[submodule "RL_materials_generation"]
+	path = RL_materials_generation
+	url = https://github.com/eltonpan/RL_materials_generation
