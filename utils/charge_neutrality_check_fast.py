@@ -7,6 +7,7 @@ import pymatgen as mg
 
 start_time = time.time()
 
+# main function to easily check charge neutrality of an inorganic formula
 def check_neutrality(formula):
     comp = Composition(formula)
     reduce_formula = comp.get_el_amt_dict()

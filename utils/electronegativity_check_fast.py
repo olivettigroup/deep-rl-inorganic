@@ -6,6 +6,7 @@ import pymatgen as mg
 from smact.screening import pauling_test
 import numpy as np
 
+# main function to easily check electronegativity balance of an inorganic formula
 def check_electronegativity(formula):
     comp = Composition(formula)
     reduce_formula = comp.get_el_amt_dict()

@@ -17,7 +17,7 @@ from utils import time_since
 
 from smiles_enumerator import SmilesEnumerator
 
-
+# main stack RNN model architecture used for both biased and unbiased model training
 class StackAugmentedRNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size, layer_type='GRU',
                  n_layers=1, is_bidirectional=False, has_stack=False,
