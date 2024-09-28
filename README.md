@@ -20,8 +20,13 @@ The full datasets used in the paper are available online. Data must be downloade
 # Usage
 Each folder pertains to a particular task (synthesis route classification or synthesis condition prediction) containing the associated Jupyter notebooks and python code.
 - The `PGN` folder contains the necessary code for the Policy Gradient Network (PGN) training and evaluation tasks.
+  - For instructions to run the PGN files, see the `PGN` folder README.
 - The `DQN` folder contains the necessary code for the Deep-Q Network (DQN) training and evaluation tasks, also linked in a separate repo (https://github.com/eltonpan/RL_materials_generation).
+  - For instructions to run the DQN models, see the linked repo.
 - The `DING` folder contains the necessary code for the Deep Inorganic Material Generator (DING) training and evaluation tasks.
+- For instructions to run the DING models, see the `DING` folder README.
+- The `utils` folder contains python code to facilitate model training and evaluation.
+  - This includes methods to check charge neutrality and electronegativity balance of generated inorganic formulas, as well as functions to calculate metrics such as uniqueness, Element Mover's Distance, and validity.
 
 # Cite
 If you use or adapt this code in your work please cite as:
