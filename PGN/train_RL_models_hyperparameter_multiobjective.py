@@ -38,8 +38,6 @@ import joblib
 from matminer.featurizers.base import MultipleFeaturizer
 import matminer.featurizers.composition as cf
 import gc
-# import profiler
-# import tracemalloc
 my_predictor = None
 
 # Load RF sinter prediction model
@@ -58,6 +56,7 @@ feature_calculators = MultipleFeaturizer([
     cf.ion.IonProperty(fast=True)
 ])
 
+# predict sinter temp for a given formula
 def predict_sinter(chemical):
     '''
     Predicts the sintering temperature of a material
@@ -77,6 +76,7 @@ def predict_sinter(chemical):
 
     return sinter_T
 
+# predict calcine temp for a given formula
 def predict_calcine(chemical):
     '''
     Predicts the calcination temperature of a material
@@ -97,7 +97,7 @@ def predict_calcine(chemical):
     return calcine_T
     
 
-
+# function to generate trajectories and receive reward
 def estimate_and_update(generator, predictor, prop_to_optimize, prop_to_optimize_2, n_to_generate, gen_data, **kwargs):
     assert prop_to_optimize in ['form_e', 'bulk_mod', 'shear_mod', 'band_gap', 'sinter_temp', 'calcine_temp']
     assert prop_to_optimize_2 in ['form_e', 'bulk_mod', 'shear_mod', 'band_gap', 'sinter_temp', 'calcine_temp']
@@ -174,6 +174,7 @@ def simple_moving_average(previous_values, new_value, ma_window_size=10):
     value_ma = value_ma/(len(previous_values[-(ma_window_size-1):]) + 1)
     return value_ma
 
+# normalize the rewards since they are on different scales
 def normalize(data, prop_to_optimize, minimize=False):
     min_dict = {
         'form_e': -4.334897518157959,
@@ -296,6 +297,7 @@ def get_reward_max(compound, predictor, prop_to_optimize, prop_to_optimize_2, ch
 #         except: 
 #             return invalid_reward
     
+# uniqueness reward for making sure model doesn't get too focused in a particular subarea
 def get_uniqueness_reward(final_compounds):
     # final_compounds_EMD_mean, final_compounds_EMD_std = similarity_to_nearest_neighbor(final_compounds)
     # # normalize
@@ -306,7 +308,7 @@ def get_uniqueness_reward(final_compounds):
     percent_unique = len(unique_mats) / len(standardized_mats)
     return percent_unique
 
-    
+# main training function
 def train_model(prop_to_optimize, prop_to_optimize_2, charge_weight, prop_weight, directory):
 #     tracemalloc.start(10)
 
@@ -395,8 +397,7 @@ def train_model(prop_to_optimize, prop_to_optimize_2, charge_weight, prop_weight
             charge_weight=charge_weight, prop_weight=prop_weight, get_features=get_fp, n_batch=10)
             rewards_max.append(simple_moving_average(rewards_max, cur_reward)) 
             rl_losses_max.append(simple_moving_average(rl_losses_max, cur_loss))
-        # memleak detection
-#         profiler.snapshot()
+
         # save model every N iterations
         if i == 1 or i % 20 == 0:
             if i == 500 or i == 1000:
@@ -470,10 +471,3 @@ def train_model(prop_to_optimize, prop_to_optimize_2, charge_weight, prop_weight
     del gen_data
     del RL_max
     gc.collect()
-#     profiler.display_stats()
-#     profiler.compare()
-#     profiler.print_trace(0)
-#     profiler.print_trace(1)
-#     profiler.print_trace(2)
-#     profiler.print_trace(3)
-#     profiler.print_trace(4)
