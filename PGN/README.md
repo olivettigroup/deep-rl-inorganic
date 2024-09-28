@@ -13,7 +13,7 @@
     - You will also need an element dictionary to create an element action space for the model. In this case we use `roost_unique_elem_dict.pkl` which is simply a list of elements used to train our Roost predictor model and can be found in the notebook.
     - By default, the model will be saved every 1000 epochs. This can be configured by the user.
 -  `train_RL_models_hyperparameter.py` contains the code to train the biased RNN generator through RL.
-    - You will have to specify a `rf_regr` and `rf_regr_calcine` models, which are random forest models trained to predict sintering and calcination temperatures, respectively.
+    - You will have to specify a `rf_regr` and `rf_regr_calcine` models, which are random forest models trained to predict sintering and calcination temperatures, respectively. These can be found in `optimal_sinter_RF.joblib.zip` and `optimal_calcine_RF.joblib.zip` files, respectively.
     - The `train_model(prop_to_optimize, weight, directory)` function allows the user to specify a property to optimize, a weight to weigh the charge/electronegativity balance rewards with the property reward (typically 0.5 is a good setting), and a directory path to save files in.
     - By default, the model will be saved every 1000 epochs. This can be configured by the user.
 - `train_RL_models_hyperparameter_multiobjective.py` contains the code to train the biased RNN generator through RL with multiple property objectives.
