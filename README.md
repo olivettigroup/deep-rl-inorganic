@@ -31,7 +31,16 @@ Each folder pertains to a particular task (synthesis route classification or syn
 # Cite
 If you use or adapt this code in your work please cite as:
 ```
-TBD
+@article{karpovich2024deep,
+  title={Deep reinforcement learning for inverse inorganic materials design},
+  author={Karpovich, Christopher and Pan, Elton and Olivetti, Elsa A},
+  journal={npj Computational Materials},
+  volume={10},
+  number={1},
+  pages={287},
+  year={2024},
+  publisher={Nature Publishing Group UK London}
+}
 ```
 
 # Disclaimer
